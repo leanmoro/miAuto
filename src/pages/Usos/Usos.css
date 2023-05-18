@@ -1,0 +1,39 @@
+.mainbox-split{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.mainbox-anio {
+    padding: 5rem 0;
+}
+
+.main-anio {
+    display: grid;
+}
+
+.select-usos {
+    width: 52%;
+    margin: auto;
+    padding: 5px 8rem 5px 0.2rem;
+    margin-bottom: 1rem;
+    font-size: 18px;
+    font-family: 'Lato', sans-serif;
+    color: #8C9091;
+}
+
+.modelo_anio {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    column-gap: 10px;
+}
+
+@media (max-width: 400px) {
+    .main-anio {
+        display: grid;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+    }
+}

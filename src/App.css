@@ -1,0 +1,27 @@
+#root {
+  text-align: center;
+  width: 100dvw;
+  min-height: 95dvh;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url("./assets/fonts/Avenir-Roman.woff2") format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir-Black';
+  src: url("./assets/fonts/Avenir-Black.woff2") format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url("./assets/fonts/Lato-Regular.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+

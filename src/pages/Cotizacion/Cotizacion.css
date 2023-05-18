@@ -1,0 +1,119 @@
+.contenedor-final {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    gap: 1.5rem;
+    background-color: #F3F3F3;
+    padding: 2rem 3rem;
+}
+
+.left {
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem;
+    font-size: 12px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #5F5F62;
+}
+
+p.intro {
+    font-size: 16px;
+    line-height: 25px;
+    color: #5F5F62;
+}
+
+section.subtitle1 {
+    margin-top: 2rem;
+}
+
+.subtitle {
+    font-size: 21px;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    color: #5F5F62;
+}
+
+.left ul li {
+    color: #5F5F62;
+}
+
+.right {
+    background-color: #FFF;
+    color: #8B8B8B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem;
+    height: min-content;
+}
+
+.btn-contratar {
+    display: block;
+    background: #00BBEC;
+    border-radius: 8px;
+    color: #fff;
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-family: 'Avenir', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    padding: 1.5rem;
+}
+
+/* .btn-contratar:hover {
+    border: 2px solid #00BBEC;
+    color: #00BBEC;
+    background-color: #FFF;
+  } */
+
+.btn-cancelar {
+    margin-top: 1rem;
+    display: block;
+    background-color: #FFF;
+    border-radius: 8px;
+    color: #00BBEC;
+    border: 2px solid #00BBEC;
+    cursor: pointer;
+    font-family: 'Avenir', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    padding: 1.5rem;
+}
+
+/* .btn-cancelar:hover {
+    background: #00BBEC;
+    color: #fff;
+    border: 2px solid transparent;
+  } */
+
+.details {
+    font-size: 18px;
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 21px;
+    font-weight: 800;
+    margin: 2rem 0 5rem;
+    color: #5F5F62;
+}
+
+pre {
+    padding: .5rem;
+    margin-bottom: 1rem;
+}
+
+li {
+    list-style: none;
+    padding: .5rem;
+}

@@ -1,0 +1,44 @@
+.prev-next .btn-prev {
+    padding: 10px 20px;
+    border: 2px solid #00BBEC !important;
+    color: #00BBEC;
+    border-radius: 8px !important;
+    cursor: pointer;
+    background-color: #fff !important;
+    margin: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 900;
+    font-family: inherit;
+}
+.prev-next .btn-prev span{
+    margin-left: 10px;
+}
+
+.prev-next .btn-next {
+    background-color: #00B9EA !important;
+    color: #fff;
+    padding: 1em 2em;
+    margin: 5px;
+    border: 2px solid transparent !important;
+    outline: none;
+    border-radius: 8px !important;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 900;
+    font-family: inherit;
+}
+
+.prev-next .btn-next:hover {
+    color: #00B9EA;
+    border: 2px solid #00B9EA !important;
+    background-color: #FFF !important;
+}
+
+.prev-next {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    column-gap: 1rem;
+}

@@ -1,0 +1,44 @@
+.litbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 24px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+.litbox p {
+    padding-top: 0.5rem;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+
+.litbox.item.selected {
+    background-color: #FFB25B;
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 0px 8px rgba(255, 178, 91, 0.1);
+    border-radius: 24px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item .check-icon {
+    width: 30px;
+    object-fit: cover;
+}
+
+.item.selected {
+    position: relative;
+  }
+
+.item.selected .check-icon {
+    position: absolute;
+    top: 7%;
+    right: 7%;
+}

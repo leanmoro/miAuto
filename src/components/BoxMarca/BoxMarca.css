@@ -1,0 +1,32 @@
+.main-marcas {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-auto-rows: 80px;
+    gap: 1rem;
+    place-items: center;
+    /* margin-top: 2rem; */
+}
+
+.main-marcas .item {
+    padding: 0 10px;
+}
+
+.main-marcas .boxMarca img .pic {
+    width: 100% !important;
+}
+
+.boxMarca {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    border-radius: 24px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+.boxMarca:has(.selected) {
+    background: linear-gradient(0deg, rgba(255, 178, 91, 0.05), rgba(255, 178, 91, 0.05)), #FFFFFF;
+    border: 1px solid #FFB25B;
+    box-shadow: 0px 0px 8px rgba(255, 178, 91, 0.1);
+    border-radius: 24px;
+}

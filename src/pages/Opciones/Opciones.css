@@ -1,0 +1,92 @@
+.subtitulo-opciones {
+    margin-bottom: 2rem;
+    color: #4E4D4D;
+    font-size: 21px;
+    font-family: 'Avenir', sans-serif;
+}
+
+.head-opc {
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 33px;
+}
+
+.detalle {
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    margin-bottom: 1rem;
+}
+
+.mainbox-opciones {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    gap: 5em;
+    text-align: start;
+    color: #5F5F62;
+    margin-bottom: .5rem;
+}
+
+.div-left {
+    width: 44%;
+}
+
+.c-box {
+    padding: 1em 0.5em;
+    border-bottom: 1px solid lightgray;
+}
+
+.first-c-box {
+    border-top: 1px solid lightgray;
+  }
+
+.div-right {
+    flex: 1;
+}
+
+label.labelchk {
+    width: 100%;
+}
+
+.box-chk {
+    margin-inline: 1rem;
+}
+
+.labelchk,
+.inner_chk {
+    display: flex;
+    justify-content: space-between;
+}
+
+.span_chk {
+    margin-left: .5rem;
+}
+
+.span-detail {
+    margin-left: .5rem;
+    font-size: 13px;
+    color: #8C9091;
+}
+
+.chkdet {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 800;
+}
+
+.select {
+    margin-top: 1.5em;
+}
+
+.select-opciones {
+    margin-top: 1em;
+    width: 100%;
+    font-size: 18px;
+    padding: 0.5rem 1rem;
+    color: #8C9091;
+}

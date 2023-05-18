@@ -1,0 +1,39 @@
+.mainbox-marcas {
+    width: 70%;
+    float: right;
+    margin-right: 1rem;
+}
+
+
+.subtitulo-marcas {
+    margin-bottom: 4rem;
+}
+
+.main-mv {
+    margin: 1rem 0 3rem;
+}
+
+.upperSel, .lowerSel, .lastSel {
+    display: flex;
+    gap: 1em;
+}
+
+.lastSel {
+    margin-top: 2em;
+}
+
+.upperSel {
+    display: flex;
+    gap: 1em;
+    padding-bottom: 2em;
+    margin-bottom: 2em;
+    border-bottom: 0.2px solid rgb(140, 144, 145, 0.5);
+}
+
+.select-mv {
+    width: 100%;
+    font-size: 18px;
+    padding: 0.5rem 1rem;
+    color: #8C9091;
+    font-family: 'Lato', sans-serif;
+}
