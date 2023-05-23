@@ -20,6 +20,9 @@ export default function Usos({
   antiguedad,
   setAntiguedad,
 }) {
+
+  const [puedeAvanzar, setPuedeAvanzar] = useState(false);
+
   const usos = [
     {
       id: 4,
@@ -57,7 +60,7 @@ export default function Usos({
 
   const [selectedItem, setSelectedItem] = useState(optionsUser);
 
-  const [puedeAvanzar, setPuedeAvanzar] = useState(false);
+  const modal2 = true;
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -70,12 +73,13 @@ export default function Usos({
   };
 
   useEffect(() => {
-    if (optionsUser.uso && optionsUser.anio) {
+    if (optionsUser.uso === 'Privado' && optionsUser.anio) {
+      console.log('dentro del if optionsUser uso(anio) = ', optionsUser.uso);
       setPuedeAvanzar(true);
     } else {
       setPuedeAvanzar(false);
     }
-  }, [optionsUser.uso, optionsUser.anio]);
+  }, [optionsUser.anio, optionsUser.uso]);
 
   const handleCombustible = (e) => {
     const selCombustible = e.target.value;
@@ -123,6 +127,9 @@ export default function Usos({
       <div className="contenedor-usos">
         {showPublicModal && (
           <Modal
+            sizeW={'700px'}
+            textoModal1={'Ver canales de atención'}
+            modal2={modal2}
             closeModal={() => setShowPublicModal(false)}
             titulo="¡Ups!"
             mensaje="Tu vehículo no es de uso privado por lo que no podemos ofrecerte Cobertura por esta vía. Te esperamos en tu sucursal Humano más cercana para poder asistirte con la mejor cobertura."
@@ -131,6 +138,9 @@ export default function Usos({
 
         {showGasModal && (
           <Modal
+            sizeW={'700px'}
+            textoModal1={'Ver sucursales'}
+            modal2={modal2}
             closeModal={() => setShowGasModal(false)}
             titulo="¡Queremos ayudarte a que obtengas la mejor cobertura!"
             mensaje="Pasa por tu sucursal Humano más cercana para realizar una inspección presencial de tu vehículo de gas o asegúralo con Mi Auto Básico."

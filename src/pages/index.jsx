@@ -69,6 +69,7 @@ export default function Formulario() {
   const [accidentes, setAccidentes] = useState([]);
   const [autoRentado, setAutoRentado] = useState([]);
   const [antiguedad, setAntiguedad] = useState(null);
+  const [valorCoti, setValorCoti] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -78,8 +79,9 @@ export default function Formulario() {
     fetchData();
   }, []);
 
-  const cotizar = async (url, dataCotizacion) => {
-    const res = await MiAutoService.cotizacion(url, dataCotizacion);
+  const preparar = async (url, dataCotizacion) => {
+    const res = await MiAutoService.prepararCotizacion(url, dataCotizacion);
+    setValorCoti(res);
   };
 
   useEffect(() => {
@@ -169,6 +171,7 @@ export default function Formulario() {
             setDataCotizacion={setDataCotizacion}
             activeStep={activeStep}
             setActiveStep={setActiveStep}
+            urldyn={urldyn}
             antiguedad={antiguedad}
           />
         );
@@ -183,7 +186,7 @@ export default function Formulario() {
             setActiveStep={setActiveStep}
             accidentes={accidentes}
             autoRentado={autoRentado}
-            cotizar={cotizar}
+            preparar={preparar}
             urldyn={urldyn}
           />
         );
@@ -217,9 +220,13 @@ export default function Formulario() {
         <div className="box-final">
           <Nav />
           <Cotizacion
-            // contratar={contratar}
+            optionsUser={optionsUser}
+            setOptionsUser={setOptionsUser}
             urldyn={urldyn}
+            setDataCotizacion={setDataCotizacion}
             dataCotizacion={dataCotizacion}
+            valorCoti={valorCoti}
+            setValorCoti={setValorCoti}
           />
         </div>
       ) : (

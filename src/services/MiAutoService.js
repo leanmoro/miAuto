@@ -6,7 +6,7 @@ class MiAutoService {
     // let str = window.location.href;
     // let dynamo = str.substring(0, str.length - 6);
     // const getUrl = `${dynamo}integrations/integrations/GetBaseUrl`;
-    
+
     try {
       const response = await fetch(getUrl);
       const data = await response.json();
@@ -101,6 +101,17 @@ class MiAutoService {
     }
   }
 
+  async fetchCoberturas (url, plan){
+    const urlCoberturas = `${url}integrations/integrations/CoberturasporProductos?plan=${plan}&producto=350100`;
+    try {
+      const response = await fetch(urlCoberturas);
+      const data = await response.json();
+      return data.payload;
+    } catch (error) {
+      console.log('error', error);
+    }
+  }
+
   async fetchModelos(url, optionsUser) {
     const urlModelos = `${url}integrations/integrations/modelosVehiculo?idMarca=${optionsUser.idMarca}`;
     try {
@@ -108,7 +119,6 @@ class MiAutoService {
       const data = await response.json();
       return data.modelos;
     } catch (error) {
-      console.log('URL en MODELOS = ', url);
       console.log('error', error);
     }
   }
@@ -125,15 +135,10 @@ class MiAutoService {
   }
 
   // Add Options Selected
-  async cotizacion(url, dataCotizacion) {
+  async prepararCotizacion(url, dataCotizacion) {
     const urlPrepararCoti = `${url}integrations/integrations/PrepararCotizacion`;
     const formData = new FormData();
     formData.append('json', JSON.stringify(dataCotizacion));
-
-    const formDataEntries = formData.entries();
-    for (let pair of formDataEntries) {
-      console.log(pair[0], pair[1]);
-    }
 
     try {
       const res = await fetch(urlPrepararCoti, {
@@ -148,7 +153,35 @@ class MiAutoService {
 
       const data = await res.json();
       console.log('data ', data);
-      alert(JSON.stringify(data));
+      return data;
+    } catch (error) {
+      console.log('error cotizar = ', error);
+    }
+  }
+
+  async cotizar(url, dataCotizacion) {
+    const urlCotizar = `${url}integrations/integrations/Cotizar`;
+    const formData = new FormData();
+    formData.append('json', JSON.stringify(dataCotizacion));
+
+    const formDataEntries = formData.entries();
+    for (let pair of formDataEntries) {
+      console.log(pair[0], pair[1]);
+    }
+
+    try {
+      const res = await fetch(urlCotizar, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text);
+      }
+
+      const data = await res.json();
+      return data;
     } catch (error) {
       console.log('error cotizar = ', error);
     }

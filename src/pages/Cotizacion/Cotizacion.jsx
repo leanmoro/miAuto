@@ -1,7 +1,44 @@
-import React from 'react';
-import './Cotizacion.css'
+import React, { useState } from 'react';
+import './Cotizacion.css';
+import Spinner from '../../components/Spinner/Spinner';
+import Opcionales from '../../components/Opcionales/Opcionales';
+import MiAutoService from '../../services/MiAutoService';
+import Adicionales from '../../components/Adicionales/Adicionales';
 
-export default function Cotizacion({ contratar, dataCotizacion, urldyn }) {
+export default function Cotizacion({
+  optionsUser,
+  setOptionsUser,
+  dataCotizacion,
+  setDataCotizacion,
+  urldyn,
+  valorCoti,
+  setValorCoti,
+}) {
+  const [checked, setChecked] = useState([]);
+
+  const cotizar = async (url, dataCotizacion) => {
+    const res = await MiAutoService.cotizar(url, dataCotizacion);
+    setValorCoti(res);
+  };
+
+  // Add/Remove checked item from list
+  const handleCheck = (e) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      // push selected value in list
+      setChecked((prev) => [...prev, value]);
+    } else {
+      // remove unchecked value from the list
+      setChecked((prev) => prev.filter((x) => x !== value));
+    }
+    setOptionsUser({ ...optionsUser, [value]: checked });
+    setDataCotizacion({ ...dataCotizacion, [value]: checked });
+    cotizar(urldyn, dataCotizacion);
+  };
+
+  // Return classes based on whether item is checked
+  var isChecked = (item) =>
+    checked.includes(item) ? 'checked-item' : 'not-checked-item';
 
   return (
     <>
@@ -16,21 +53,23 @@ export default function Cotizacion({ contratar, dataCotizacion, urldyn }) {
           </p>
           <section className="subtitle1">
             <p className="subtitle">Cobertura</p>
-            <pre>{JSON.stringify(dataCotizacion, null, 2)}</pre>
+            {/* <pre>{JSON.stringify(dataCotizacion, null, 2)}</pre> */}
           </section>
           <section className="subtitle1">
-            <p className="subtitle">Coberturas opcionales</p>
-            <ul>
-              <li>Lesiones corporales y/o muerte a un tercero. </li>
-              <li>Lesiones corporales y/o muerte a más de un tercero </li>
-              <li>Daños a la propiedad de terceros. </li>
-              <li>Lesiones corporales y/o muerte a un pasajero.</li>
-              <li>Lesiones corporales y/o muerte a más de un pasajero.</li>
-              <li>Accidentes personales conductor.</li>
-              <li>Gastos médicos al conductor.</li>
-              <li>Fianza judicial.</li>
-              <li>Defensa legal.</li>
-            </ul>
+            <p className="subtitle">Opcionales</p>
+            <Opcionales
+              handleCheck={handleCheck}
+              isChecked={isChecked}
+              dataCotizacion={dataCotizacion}
+            />
+          </section>
+          <section className="subtitle1">
+            <p className="subtitle">Adicionales</p>
+            <Adicionales
+              handleCheck={handleCheck}
+              isChecked={isChecked}
+              dataCotizacion={dataCotizacion}
+            />
           </section>
         </div>
 
@@ -45,11 +84,11 @@ export default function Cotizacion({ contratar, dataCotizacion, urldyn }) {
           </div>
           <div className="total">
             <div>Total</div>
-            <div>$ 1.000,00</div>
+            <div>$ {valorCoti ? valorCoti : <Spinner />}</div>
           </div>
           <button
             className="btn-contratar"
-              // onClick={()=>contratar(urldyn, dataCotizacion)}
+            // onClick={()=>contratar(urldyn, dataCotizacion)}
           >
             Contratar
           </button>

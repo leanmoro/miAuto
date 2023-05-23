@@ -71,7 +71,7 @@ export default function Marcas({
     setDataCotizacion({ ...dataCotizacion, '250323': selZona });
   };
 
-  const [valorVehiculo, setValorVehiculo] = useState("");
+  const [valorVehiculo, setValorVehiculo] = useState('');
 
   const handleChangeValorVehiculo = (e) => {
     const regex = /^[0-9\b]+$/; // Expresión regular para permitir solo números
@@ -91,7 +91,7 @@ export default function Marcas({
   }, [optionsUser.marcaModeloVersion]);
 
   useEffect(() => {
-    console.log("antiguedad = " , antiguedad)
+    console.log('antiguedad = ', antiguedad);
     console.log('marcas', marcas);
     if (optionsUser.idMarca !== '') {
       setSelectedItem(optionsUser);
@@ -121,11 +121,7 @@ export default function Marcas({
   return (
     <React.Fragment>
       <div className="contenedor">
-        <img
-          className="sarah"
-          src={sarah}
-          alt="Sarah"
-        />
+        <img className="sarah" src={sarah} alt="Sarah" />
         <h1 className="titulo" style={{ fontSize: '38px' }}>
           Por favor cuéntame más sobre tu vehiculo
         </h1>
@@ -211,11 +207,12 @@ export default function Marcas({
 
                 {antiguedad < 11 && (
                   <div className="lastSel">
-                    <input required
+                    <input
+                      required
                       placeholder="Valor del vehículo"
                       type="text"
-                      value={valorVehiculo} 
-                      title='Debe ingresar números'
+                      value={valorVehiculo}
+                      title="Debe ingresar números"
                       className="select-mv"
                       id="valorVehiculo"
                       name="valorVehiculo"

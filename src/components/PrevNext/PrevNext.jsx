@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState , useEffect } from 'react';
 import './PrevNext.css';
 import arrow from '../../assets/images/Arrow.png';
 
 export default function PrevNext({
   handleNext,
   handleBack,
-  handleCotizar,
+  handlePreparar,
   puedeAvanzar,
   puedeCotizar,
   urldyn,
@@ -13,6 +13,13 @@ export default function PrevNext({
   const handleMagento = () => {
     window.location.href = `${urldyn}cotizar`;
   };
+
+
+  
+  useEffect(() => {
+    console.log('puede avanzar PrevNext = ', puedeAvanzar);
+  }, [puedeAvanzar])
+
   return (
     <>
       <section className="prev-next">
@@ -35,7 +42,7 @@ export default function PrevNext({
         ) : (
           <button
             className="btn-next"
-            onClick={puedeCotizar ? handleCotizar : handleNext}
+            onClick={puedeCotizar ? handlePreparar : handleNext}
           >
             Siguiente
           </button>

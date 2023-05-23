@@ -11,7 +11,8 @@
     font-weight: 900;
     font-family: inherit;
 }
-.prev-next .btn-prev span{
+
+.prev-next .btn-prev span {
     margin-left: 10px;
 }
 
@@ -41,4 +42,11 @@
     display: flex;
     justify-content: center;
     column-gap: 1rem;
+}
+
+.btn-next:disabled,
+.btn-next[disabled] {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
 }

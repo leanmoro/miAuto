@@ -15,8 +15,11 @@ export default function Vehiculos({
   setOptionsUser,
   activeStep,
   setActiveStep,
-  urldyn
+  urldyn,
 }) {
+
+  const [puedeAvanzar, setPuedeAvanzar] = useState(false);
+
   const vehiculos = [
     {
       id: 1,
@@ -48,8 +51,6 @@ export default function Vehiculos({
     console.log(optionsUser);
   };
 
-  const [puedeAvanzar, setPuedeAvanzar] = useState(false);
-
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
@@ -61,12 +62,13 @@ export default function Vehiculos({
   };
 
   useEffect(() => {
+    console.log('optionsUser vehiculo = ', optionsUser.vehiculo);
     if (optionsUser.vehiculo) {
       setPuedeAvanzar(true);
-    } else {
-      setPuedeAvanzar(false);
+      console.log('state puedeAvanzar = ', puedeAvanzar);
     }
   }, [optionsUser.vehiculo]);
+  
 
   useEffect(() => {
     console.log(optionsUser);

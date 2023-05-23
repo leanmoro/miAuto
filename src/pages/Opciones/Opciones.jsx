@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './Opciones.css';
 import sarah from '../../assets/images/AvatarSarah.png';
 import PrevNext from '../../components/PrevNext/PrevNext';
+import Opcionales from '../../components/Opcionales/Opcionales';
+import Adicionales from '../../components/Adicionales/Adicionales';
 
 export default function Opciones({
   optionsUser,
@@ -12,22 +14,14 @@ export default function Opciones({
   autoRentado,
   activeStep,
   setActiveStep,
-  cotizar,
+  preparar,
   urldyn,
 }) {
-  const listaCheckBoxes = [
-    { value: '250035', label: 'Aeroambulancia' },
-    { value: '250029', label: 'Asistencia vial' },
-    { value: '250062', label: 'Últimos gastos' },
-    { value: '250042', label: 'Seguridad vial' },
-    { value: '250089', label: 'Seguro de vida' },
-  ];
-
   const [puedeCotizar, setPuedeCotizar] = useState(false);
 
-  const [checked, setChecked] = useState([]);
-
   const [puedeAvanzar, setPuedeAvanzar] = useState(false);
+
+  const [checked, setChecked] = useState([]);
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -39,8 +33,8 @@ export default function Opciones({
     }
   };
 
-  const handleCotizar = () => {
-    cotizar(urldyn, dataCotizacion);
+  const handlePreparar = () => {
+    preparar(urldyn, dataCotizacion);
     setActiveStep(activeStep + 1);
   };
 
@@ -63,14 +57,12 @@ export default function Opciones({
     if (checked) {
       // push selected value in list
       setChecked((prev) => [...prev, value]);
-      setOptionsUser({ ...optionsUser, [value]: checked });
-      setDataCotizacion({ ...dataCotizacion, [value]: checked });
     } else {
       // remove unchecked value from the list
       setChecked((prev) => prev.filter((x) => x !== value));
-      setOptionsUser({ ...optionsUser, [value]: checked });
-      setDataCotizacion({ ...dataCotizacion, [value]: checked });
     }
+    setOptionsUser({ ...optionsUser, [value]: checked });
+    setDataCotizacion({ ...dataCotizacion, [value]: checked });
   };
 
   // Return classes based on whether item is checked
@@ -113,48 +105,21 @@ export default function Opciones({
             <p className="detalle">
               Selecciona coberturas opcionales que quieras añadir
             </p>
-            {listaCheckBoxes.map((item, index) => (
-              <div className={`c-box ${index === 0 ? 'first-c-box' : ''}`} key={index}>
-                <label className='labelchk'>
-                  <span className={`span_chk ${isChecked(item.value)}`}>
-                    {item.label}
-                  </span>
-                  {/* {item.label} */}
-                  <div className="inner_chk">
-                    <span className="chkdet">+ RD$ 2.000</span>
-                    <input
-                    className='box-chk'
-                      value={item.value}
-                      type="checkbox"
-                      onChange={handleCheck}
-                    />
-                  </div>
-                </label>
-              </div>
-            ))}
+            <Opcionales
+              handleCheck={handleCheck}
+              isChecked={isChecked}
+              dataCotizacion={dataCotizacion}
+            />
           </div>
           <div className="div-right">
             <div className="head-opc">Adicional</div>
             <p className="detalle">Aumenta el limite de tu cobertura</p>
-            {/* { value: '250105', label: 'Responsabilidad Civil' }, */}
-            <div className="c-box first-c-box">
-                <label className='labelchk'>
-                  <span className={`span_chk ${isChecked('250105')}`}>
-                  Responsabilidad Civil
-                  </span>
-                  <div className="inner_chk">
-                    <span className="chkdet">+ RD$ 2.000</span>
-                    <input
-                    className='box-chk'
-                      value='250105'
-                      type="checkbox"
-                      onChange={handleCheck}
-                    />
-                  </div>
-                </label>
-                <span className='span-detail'>Aumentas el limite a $300.000</span>
-              </div>
-            
+            <Adicionales
+              handleCheck={handleCheck}
+              isChecked={isChecked}
+              dataCotizacion={dataCotizacion}
+            />
+
             <div className="select accidentes">
               <label htmlFor="select-opciones">
                 Accidentes personales conductor
@@ -194,9 +159,9 @@ export default function Opciones({
       <PrevNext
         handleNext={handleNext}
         handleBack={handleBack}
-        puedeAvanzar={puedeAvanzar}
         puedeCotizar={puedeCotizar}
-        handleCotizar={handleCotizar}
+        puedeAvanzar={puedeAvanzar}
+        handlePreparar={handlePreparar}
       />
     </React.Fragment>
   );

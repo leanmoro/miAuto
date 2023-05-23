@@ -5,7 +5,7 @@ import tilden from '../../assets/images/tilde-n.png';
 import tildew from '../../assets/images/tilde-w.png';
 import Modal from '../../components/ModalMasInfo/ModalMasInfo';
 
-const Card = ({ info, selected, onClick, sizeW, sizeH, borderR, best }) => {
+const Card = ({ info, selected, onClick, sizeW, sizeH, borderR, best, coberturas }) => {
   const [showMasInfoModal, setShowMasInfoModal] = useState(false);
 
   const handleMasInfo = (info) => {
@@ -19,9 +19,11 @@ const Card = ({ info, selected, onClick, sizeW, sizeH, borderR, best }) => {
     <>
       {showMasInfoModal && (
         <Modal
+        sizeW={'1100px'}
+           
           closeModal={() => setShowMasInfoModal(false)}
           titulo={'Mi Auto ' + info.title}
-          mensaje="Tu vehículo no es de uso privado por lo que no podemos ofrecerte Cobertura por esta vía. Te esperamos en tu sucursal Humano más cercana para poder asistirte con la mejor cobertura."
+          coberturas={coberturas}
         />
       )}
       {best ? (

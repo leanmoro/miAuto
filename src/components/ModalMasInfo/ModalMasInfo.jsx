@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ModalMasInfo.css';
 import cerrar from '../../assets/images/remove.png';
 import auto from '../../assets/images/MiAuto-2.png';
 import icond from '../../assets/images/download.png';
 
-export default function Modal({ closeModal, titulo, mensaje }) {
+export default function Modal({ closeModal, titulo, coberturas }) {
+  useEffect(() => {
+    console.log('Coberturas state = ', coberturas);
+  }, [coberturas]);
+
   return (
     <>
       <div className="box-modal" onClick={() => closeModal(false)}>
@@ -18,20 +22,14 @@ export default function Modal({ closeModal, titulo, mensaje }) {
               <div className="limites">Límites</div>
             </div>
             <div className="info-cobertura">
-              <div className="item-desc">Cobertura</div>
-              <div className="item-precio">Límites</div>
-              <div className="item-desc">Cobertura</div>
-              <div className="item-precio">Límites</div>
-              <div className="item-desc">Cobertura</div>
-              <div className="item-precio">Límites</div>
-              <div className="item-desc">Cobertura</div>
-              <div className="item-precio">Límites</div>
-              <div className="item-desc">Cobertura</div>
-              <div className="item-precio">Límites</div>
-              <div className="item-desc">Cobertura</div>
-              <div className="item-precio">Límites</div>
-              <div className="item-desc">Cobertura</div>
-              <div className="item-precio">Límites</div>
+              {coberturas.map((item) => (
+                <React.Fragment key={item.id}>
+                  <div className="item-desc" s>{item.garantiaDescripcion}</div>
+                  <div className="item-precio">
+                    {item.garantiaLimiteDescripcion}
+                  </div>
+                </React.Fragment>
+              ))}
             </div>
             <button
               className="boton-descargar"

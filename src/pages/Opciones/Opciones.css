@@ -36,47 +36,8 @@
     width: 44%;
 }
 
-.c-box {
-    padding: 1em 0.5em;
-    border-bottom: 1px solid lightgray;
-}
-
-.first-c-box {
-    border-top: 1px solid lightgray;
-  }
-
 .div-right {
     flex: 1;
-}
-
-label.labelchk {
-    width: 100%;
-}
-
-.box-chk {
-    margin-inline: 1rem;
-}
-
-.labelchk,
-.inner_chk {
-    display: flex;
-    justify-content: space-between;
-}
-
-.span_chk {
-    margin-left: .5rem;
-}
-
-.span-detail {
-    margin-left: .5rem;
-    font-size: 13px;
-    color: #8C9091;
-}
-
-.chkdet {
-    font-size: 18px;
-    line-height: 24px;
-    font-weight: 800;
 }
 
 .select {

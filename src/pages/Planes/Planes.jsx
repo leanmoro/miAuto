@@ -4,6 +4,8 @@ import Card from '../../components/CardPlan/CardPlan';
 import sarah from '../../assets/images/AvatarSarah.png';
 import PrevNext from '../../components/PrevNext/PrevNext';
 
+import MiAutoService from '../../services/MiAutoService';
+
 export default function Planes({
   optionsUser,
   setOptionsUser,
@@ -11,8 +13,11 @@ export default function Planes({
   setDataCotizacion,
   activeStep,
   setActiveStep,
-  antiguedad
+  urldyn,
+  antiguedad,
 }) {
+  const [puedeAvanzar, setPuedeAvanzar] = useState(false);
+
   const planes = [
     {
       id: 2,
@@ -74,6 +79,8 @@ export default function Planes({
 
   const [shownPlanes, setShownPlanes] = useState([]);
 
+  const [coberturas, setCoberturas] = useState([]);
+
   const best = true;
 
   function updatePlanes(planes, optionsUser, antiguedad) {
@@ -103,8 +110,6 @@ export default function Planes({
 
   const [selectedItem, setSelectedItem] = useState(optionsUser);
 
-  const [puedeAvanzar, setPuedeAvanzar] = useState(false);
-
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
@@ -116,7 +121,12 @@ export default function Planes({
   };
 
   useEffect(() => {
+    async function fetchData(urldyn, plan) {
+      const coberturas = await MiAutoService.fetchCoberturas(urldyn, plan);
+      setCoberturas(coberturas);
+    }
     if (optionsUser.plan) {
+      fetchData(urldyn, dataCotizacion[250041]);
       setPuedeAvanzar(true);
     } else {
       setPuedeAvanzar(false);
@@ -129,16 +139,20 @@ export default function Planes({
     setOptionsUser({ ...optionsUser, plan: plan.title });
     setDataCotizacion({ ...dataCotizacion, '250041': plan.id });
   };
+ 
 
   useEffect(() => {
-    console.log(optionsUser);
-    console.log("antiguedad que viene a planes =", antiguedad)
+    console.log('antiguedad que viene a planes =', antiguedad);
     updatePlanes(planes, optionsUser);
     if (optionsUser.plan !== '') {
       setSelectedItem(optionsUser);
     }
     console.log(optionsUser);
   }, []);
+
+  useEffect(() => {
+    console.log('dataCotizacion: ', dataCotizacion);
+  }, [dataCotizacion, '250041']);
 
   return (
     <React.Fragment>
@@ -167,6 +181,7 @@ export default function Planes({
                       sizeW={'320px'}
                       borderR={'24px'}
                       onClick={handleItemClick}
+                      coberturas={coberturas}
                     />
                   </>
                 );
@@ -179,6 +194,7 @@ export default function Planes({
                     sizeW={'350px'}
                     borderR={'24px'}
                     onClick={handleItemClick}
+                    coberturas={coberturas}
                   />
                 );
               }
